@@ -15,16 +15,16 @@
                             <v-list-item-title>
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Price :  {{item.price }}
+                                Buyer :  {{item.buyer }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                Type :  {{item.type }}
+                                Price :  {{item.price }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
                                 Name :  {{item.name }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                Buyer :  {{item.buyer }}
+                                Status :  {{item.status }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 

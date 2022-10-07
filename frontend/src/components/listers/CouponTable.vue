@@ -67,10 +67,10 @@
             headers: 
                 [
                     { text: "id", value: "id" },
-                    { text: "price", value: "price" },
-                    { text: "type", value: "type" },
-                    { text: "name", value: "name" },
                     { text: "buyer", value: "buyer" },
+                    { text: "price", value: "price" },
+                    { text: "name", value: "name" },
+                    { text: "status", value: "status" },
                 ],
             coupon : [],
             newValue: {},
@@ -88,10 +88,10 @@
             this.values = temp.data._embedded.coupons;
 
             this.newValue = {
-                'price': 0,
-                'type': '',
-                'name': '',
                 'buyer': '',
+                'price': 0,
+                'name': '',
+                'status': '',
             }
         },
         methods: {

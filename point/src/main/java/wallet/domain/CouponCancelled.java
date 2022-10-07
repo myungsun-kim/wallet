@@ -7,7 +7,7 @@ import wallet.infra.AbstractEvent;
 
 @Data
 @ToString
-public class CouponPurchased extends AbstractEvent {
+public class CouponCancelled extends AbstractEvent {
 
     private Long id;
     private String buyer;

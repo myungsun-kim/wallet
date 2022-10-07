@@ -7,10 +7,7 @@ import wallet.infra.AbstractEvent;
 
 @Data
 @ToString
-public class CouponPurchased extends AbstractEvent {
+public class InsufficientPointsOccurred extends AbstractEvent {
 
     private Long id;
-    private String buyer;
-    private Long price;
-    private String name;
 }

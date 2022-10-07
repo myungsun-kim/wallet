@@ -58,6 +58,20 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>
+            <v-btn
+                    v-if="!editMode"
+                    color="deep-purple lighten-2"
+                    text
+                    @click="openUse"
+            >
+                Use
+            </v-btn>
+            <v-dialog v-model="useDiagram" width="500">
+                <UseCommand
+                        @closeDialog="closeUse"
+                        @use="use"
+                ></UseCommand>
+            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -95,6 +109,7 @@
                 timeout: 5000,
                 text: ''
             },
+            useDiagram: false,
         }),
         computed:{
         },
@@ -188,6 +203,32 @@
             },
             change(){
                 this.$emit('input', this.value);
+            },
+            async use(params) {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links['use'].href), params)
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                    this.closeUse();
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            openUse() {
+                this.useDiagram = true;
+            },
+            closeUse() {
+                this.useDiagram = false;
             },
         },
     }

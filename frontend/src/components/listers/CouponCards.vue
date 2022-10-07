@@ -68,10 +68,10 @@
             me.values = temp.data._embedded.coupons;
             
             me.newValue = {
-                'price': 0,
-                'type': '',
-                'name': '',
                 'buyer': '',
+                'price': 0,
+                'name': '',
+                'status': '',
             }
         },
         methods:{

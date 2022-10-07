@@ -89,18 +89,24 @@
                             </v-list-item>
 
                             <v-card-actions>
-                                <v-btn 
-                                    class="mx-auto"
-                                    outlined
-                                    rounded
-                                    key="coupons"
-                                    to="/coupons"
-                                    @click="changeUrl()"
-                                    color="deep-purple lighten-2"
-                                    style="font-weight:500; font-size:20px; padding:15px; border:solid 2px;"
-                                >
-                                    Coupon
-                                </v-btn>
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn 
+                                            v-on="on"
+                                            class="mx-auto"
+                                            outlined
+                                            rounded
+                                            key="coupons"
+                                            to="/coupons"
+                                            @click="changeUrl()"
+                                            color="deep-purple lighten-2"
+                                            style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
+                                        >
+                                            Coupon
+                                        </v-btn>
+                                    </template>
+                                    <span>Coupon</span>
+                                </v-tooltip>
                             </v-card-actions>
                         </v-card>
 
@@ -119,18 +125,24 @@
                             </v-list-item>
 
                             <v-card-actions>
-                                <v-btn 
-                                    class="mx-auto"
-                                    outlined
-                                    rounded
-                                    key="points"
-                                    to="/points"
-                                    @click="changeUrl()"
-                                    color="deep-purple lighten-2"
-                                    style="font-weight:500; font-size:20px; padding:15px; border:solid 2px;"
-                                >
-                                    Point
-                                </v-btn>
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn 
+                                            v-on="on"
+                                            class="mx-auto"
+                                            outlined
+                                            rounded
+                                            key="points"
+                                            to="/points"
+                                            @click="changeUrl()"
+                                            color="deep-purple lighten-2"
+                                            style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
+                                        >
+                                            Point
+                                        </v-btn>
+                                    </template>
+                                    <span>Point</span>
+                                </v-tooltip>
                             </v-card-actions>
                         </v-card>
 
