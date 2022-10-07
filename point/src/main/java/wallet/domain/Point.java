@@ -1,6 +1,7 @@
 package wallet.domain;
 
 import wallet.domain.PointsDeducted;
+import wallet.domain.InsufficientPointsOccurred;
 import wallet.PointApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -42,6 +43,11 @@ public class Point  {
         PointsDeducted pointsDeducted = new PointsDeducted(this);
         pointsDeducted.publishAfterCommit();
 
+
+
+        InsufficientPointsOccurred insufficientPointsOccurred = new InsufficientPointsOccurred(this);
+        insufficientPointsOccurred.publishAfterCommit();
+
     }
 
     public static PointRepository repository(){
@@ -51,8 +57,39 @@ public class Point  {
 
 
 
+    public void use(UseCommand useCommand){
+    }
 
     public static void usePoint(CouponPurchased couponPurchased){
+
+        /** Example 1:  new item 
+        Point point = new Point();
+        repository().save(point);
+
+        PointsDeducted pointsDeducted = new PointsDeducted(point);
+        pointsDeducted.publishAfterCommit();
+        InsufficientPointsOccurred insufficientPointsOccurred = new InsufficientPointsOccurred(point);
+        insufficientPointsOccurred.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(couponPurchased.get???()).ifPresent(point->{
+            
+            point // do something
+            repository().save(point);
+
+            PointsDeducted pointsDeducted = new PointsDeducted(point);
+            pointsDeducted.publishAfterCommit();
+            InsufficientPointsOccurred insufficientPointsOccurred = new InsufficientPointsOccurred(point);
+            insufficientPointsOccurred.publishAfterCommit();
+
+         });
+        */
+
+        
+    }
+    public static void compensatePoint(CouponCancelled couponCancelled){
 
         /** Example 1:  new item 
         Point point = new Point();
@@ -62,7 +99,7 @@ public class Point  {
 
         /** Example 2:  finding and process
         
-        repository().findById(couponPurchased.get???()).ifPresent(point->{
+        repository().findById(couponCancelled.get???()).ifPresent(point->{
             
             point // do something
             repository().save(point);

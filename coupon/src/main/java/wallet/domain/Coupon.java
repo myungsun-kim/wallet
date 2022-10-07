@@ -27,13 +27,13 @@ public class Coupon  {
     
     
     
+    private String buyer;
+    
+    
+    
+    
+    
     private Long price;
-    
-    
-    
-    
-    
-    private String type;
     
     
     
@@ -45,7 +45,7 @@ public class Coupon  {
     
     
     
-    private String buyer;
+    private String status;
 
     @PostPersist
     public void onPostPersist(){
@@ -53,6 +53,11 @@ public class Coupon  {
 
         CouponPurchased couponPurchased = new CouponPurchased(this);
         couponPurchased.publishAfterCommit();
+
+        // Get request from Point
+        //wallet.external.Point point =
+        //    Application.applicationContext.getBean(wallet.external.PointService.class)
+        //    .getPoint(/** mapping value needed */);
 
     }
 
@@ -63,7 +68,33 @@ public class Coupon  {
 
 
 
+    public void cancelCoupon(){
+        CouponCancelled couponCancelled = new CouponCancelled(this);
+        couponCancelled.publishAfterCommit();
 
+    }
+
+    public static void cancel(InsufficientPointsOccurred insufficientPointsOccurred){
+
+        /** Example 1:  new item 
+        Coupon coupon = new Coupon();
+        repository().save(coupon);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(insufficientPointsOccurred.get???()).ifPresent(coupon->{
+            
+            coupon // do something
+            repository().save(coupon);
+
+
+         });
+        */
+
+        
+    }
 
 
 }
